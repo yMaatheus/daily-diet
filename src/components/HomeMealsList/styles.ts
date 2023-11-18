@@ -58,7 +58,7 @@ export const Title = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
 
-export const Icon = styled(Circle).attrs(({ theme, isDiet }: CircleProps) => ({
+export const Icon = styled(Circle).attrs<CircleProps>(({ theme, isDiet }) => ({
   size: 14,
   color: isDiet ? theme.COLORS.GREEN_MID : theme.COLORS.RED_MID,
   weight: "fill",
