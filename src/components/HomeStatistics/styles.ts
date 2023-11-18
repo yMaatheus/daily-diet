@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.TouchableOpacity`
   padding: 20px 16px;
-  background-color: ${({ theme }) => theme.COLORS.GREEN_MID};
+  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
   border-radius: 10px;
   justify-content: center;
   align-items: center;
