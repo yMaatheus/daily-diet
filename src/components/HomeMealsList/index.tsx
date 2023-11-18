@@ -1,16 +1,9 @@
 import { SectionList } from "react-native";
 import * as S from "./styles";
 import { formatDateToHours } from "@utils/time-utils";
-import { ItemMealList, MEALS_DATA } from "../../data";
-import { useCallback, useEffect, useState } from "react";
+import { ItemMealList } from "../../data";
 
-export function HomeMealsList() {
-  const [data, setData] = useState<ItemMealList[]>([]);
-
-  useEffect(useCallback(() => {
-    setData(MEALS_DATA);
-  }, []))
-  
+export function HomeMealsList({ data }: { data: ItemMealList[] } ) {
   return (
     <SectionList
       sections={data}
