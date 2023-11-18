@@ -1,9 +1,14 @@
 import { ArrowUpRight } from "phosphor-react-native";
 import styled from "styled-components/native";
 
-export const Container = styled.TouchableOpacity`
+type Props = {
+  isDiet: boolean;
+};
+
+export const Container = styled.TouchableOpacity<Props>`
   padding: 20px 16px;
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ theme, isDiet }) =>
+    isDiet ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
   border-radius: 10px;
   justify-content: center;
   align-items: center;
@@ -19,12 +24,10 @@ export const Description = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
 `;
 
-export const Icon = styled(ArrowUpRight).attrs(
-  ({ theme }) => ({
-    size: 24,
-    color: theme.COLORS.GREEN_DARK,
-  })
-)`
+export const Icon = styled(ArrowUpRight).attrs<Props>(({ theme, isDiet }) => ({
+  size: 24,
+  color: isDiet ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK,
+}))<Props>`
   position: absolute;
   top: 8px;
   right: 8px;

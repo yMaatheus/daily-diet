@@ -1,6 +1,10 @@
 import { ArrowLeft } from "phosphor-react-native";
 import styled from "styled-components/native";
 
+type Props = {
+  isDiet: boolean;
+};
+
 export const Header = styled.View`
   position: relative;
   width: 100%;
@@ -16,10 +20,10 @@ export const BackButton = styled.TouchableOpacity`
   left: 24px;
 `;
 
-export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => ({
+export const BackIcon = styled(ArrowLeft).attrs<Props>(({ theme, isDiet }) => ({
   size: 24,
-  color: theme.COLORS.GREEN_DARK,
-}))``;
+  color: isDiet ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK,
+}))<Props>``;
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_700};

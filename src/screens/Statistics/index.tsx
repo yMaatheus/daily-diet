@@ -1,19 +1,39 @@
+import { useMemo } from "react";
 import { StatisticsHeader } from "@components/StatisticsHeader";
-import * as S from "./styles";
 import { StatisticsCard } from "@components/StatisticsCard";
 import { useTheme } from "styled-components/native";
+import { useRoute } from "@react-navigation/native";
+import { ItemMealList } from "@/data";
+import * as S from "./styles";
+
+type RouteParams = {
+  percentage: string;
+  data: ItemMealList[];
+  isDiet: boolean;
+}
 
 export function Statistics() {
   const theme = useTheme();
+  const route = useRoute();
+  const { percentage, data, isDiet } = route.params as RouteParams;
+
+  const meals = useMemo(() => data.flatMap((meal) => meal.data), [data]);
+
+  const totalMeals = useMemo(() => meals.length, [meals]);
+  const totalMealsInDiet = useMemo(() => meals.filter((meal) => meal.isDiet).length, [meals]);
+
   return (
-    <S.Screen>
-      <StatisticsHeader />
+    <S.Screen isDiet={isDiet}>
+      <StatisticsHeader
+        percentage={percentage}
+        isDiet={isDiet}
+      />
 
       <S.Content>
         <S.ContentTitle>Estatísticas gerais</S.ContentTitle>
 
         <StatisticsCard
-          title="22"
+          title="0"
           description="melhor sequência de pratos dentro da dieta"
           backgroundColor={theme.COLORS.GRAY_200}
           style={{
@@ -22,7 +42,7 @@ export function Statistics() {
         />
 
         <StatisticsCard
-          title="109"
+          title={`${totalMeals}`}
           description="refeições registradas"
           backgroundColor={theme.COLORS.GRAY_200}
           style={{
@@ -32,13 +52,13 @@ export function Statistics() {
 
         <S.ContentDietCards>
           <StatisticsCard
-            title="99"
+            title={`${totalMealsInDiet}`}
             description="refeições dentro da dieta"
             backgroundColor={theme.COLORS.GREEN_LIGHT}
           />
 
           <StatisticsCard
-            title="10"
+            title={`${totalMeals - totalMealsInDiet}`}
             description="refeições fora da dieta"
             backgroundColor={theme.COLORS.RED_LIGHT}
           />

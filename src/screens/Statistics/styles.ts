@@ -1,8 +1,13 @@
 import styled from "styled-components/native";
 
-export const Screen = styled.SafeAreaView`
+type Props = {
+  isDiet: boolean;
+};
+
+export const Screen = styled.SafeAreaView<Props>`
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ theme, isDiet }) =>
+    isDiet ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
 `;
 
 export const Content = styled.View`
@@ -26,10 +31,10 @@ export const ContentTitle = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 
   margin-bottom: 10px;
-`
+`;
 
 export const ContentDietCards = styled.View`
   flex-direction: row;
-  
+
   gap: 12px;
-`
+`;
