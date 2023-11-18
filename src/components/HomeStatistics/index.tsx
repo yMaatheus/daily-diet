@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-export function HomeCard() {
+export function HomeStatistics() {
   return (
     <S.Container>
       <S.Title>90,86%</S.Title>
