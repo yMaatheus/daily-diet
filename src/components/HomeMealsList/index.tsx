@@ -1,9 +1,9 @@
+import { format } from "date-fns";
 import { SectionList } from "react-native";
-import * as S from "./styles";
-import { formatDateToHours } from "@utils/time-utils";
 import { ItemMealList } from "../../data";
+import * as S from "./styles";
 
-export function HomeMealsList({ data }: { data: ItemMealList[] } ) {
+export function HomeMealsList({ data }: { data: ItemMealList[] }) {
   return (
     <SectionList
       sections={data}
@@ -11,7 +11,7 @@ export function HomeMealsList({ data }: { data: ItemMealList[] } ) {
       renderItem={({ item }) => (
         <S.ItemContainer>
           <S.ItemInfo>
-            <S.Time>{formatDateToHours(item.date)}</S.Time>
+            <S.Time>{format(item.date, "HH:mm")}</S.Time>
             <S.Separator />
             <S.Title>{item.name}</S.Title>
           </S.ItemInfo>
