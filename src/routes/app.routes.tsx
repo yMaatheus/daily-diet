@@ -10,6 +10,7 @@ export function AppRoutes() {
   return (
     <Navigator
       screenOptions={{ headerShown: false }}
+      initialRouteName='home'
     >
       <Screen
         name='home'
