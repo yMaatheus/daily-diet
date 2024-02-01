@@ -1,18 +1,36 @@
-import { useNavigation } from "@react-navigation/native";
 import { ItemMealList } from "@/data";
+import { displayPercentage, isDietPercentage } from "@/utils/diet-utils";
+import { getBestStreak } from "@/utils/streak-utils";
+import { useNavigation } from "@react-navigation/native";
+import { useEffect, useMemo, useState } from "react";
 import * as S from "./styles";
 
 type Props = {
-  percentage: string;
   data: ItemMealList[];
-  isDiet: boolean;
 }
 
-export function HomeStatistics({ percentage, data, isDiet }: Props) {
+export function HomeStatistics({ data }: Props) {
   const navigation = useNavigation();
+  const [isDiet, setDiet] = useState<boolean>(true)
+
+  const meals = useMemo(() => data.flatMap((meal) => meal.data), [data]);
+
+  const streak = useMemo(() => getBestStreak(meals), [meals]);
+  const totalMeals = useMemo(() => meals.length, [meals]);
+  const totalMealsInDiet = useMemo(() => meals.filter((meal) => meal.isDiet).length, [meals]);
+
+  const percentage = useMemo(() => displayPercentage(totalMeals, totalMealsInDiet), [totalMeals, totalMealsInDiet]);
+
+  useEffect(() => {
+    if (isDietPercentage(totalMeals, totalMealsInDiet)) {
+      setDiet(true);
+      return;
+    }
+    setDiet(false)
+  }, [data])
 
   function handleStatistics() {
-    navigation.navigate('statistics', { data, isDiet, percentage })
+    navigation.navigate('statistics', { data, isDiet, percentage, streak })
   }
 
   return (
