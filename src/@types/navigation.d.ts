@@ -6,6 +6,11 @@ export declare global {
         percentage: string;
         data: ItemMealList[];
         isDiet: boolean;
+        streak: string;
+      };
+      "register-meal": undefined;
+      feedback: {
+        isDiet: boolean;
       };
     }
   }
