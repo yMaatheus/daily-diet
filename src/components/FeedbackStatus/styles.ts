@@ -1,16 +1,22 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
+
+type Props = {
+  isDiet: boolean;
+};
 
 export const Container = styled.View`
-   gap: 8px;
+  gap: 8px;
 `;
 
-export const Title = styled.Text`
+export const Title = styled.Text<Props>`
   text-align: center;
 
   font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 
-  color: ${({ theme }) => theme.COLORS.GREEN_DARK};
+  ${({ theme, isDiet }) => css`
+    color: ${isDiet ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
+  `}
 `;
 
 export const Description = styled.Text`
