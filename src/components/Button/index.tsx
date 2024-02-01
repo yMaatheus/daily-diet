@@ -1,7 +1,7 @@
 import { TouchableOpacityProps } from 'react-native';
 import * as S from './styles';
 
-export type ButtonType = 'dark' | 'light';
+export type ButtonType = 'dark' | 'light' | 'diet' | 'no-diet';
 
 type ButtonProps = TouchableOpacityProps & {
   title: string;
