@@ -1,3 +1,5 @@
+import { Feedback } from '@/screens/Feedback'
+import { RegisterMeal } from '@/screens/RegisterMeal'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Home } from '@screens/Home'
 import { Statistics } from '@screens/Statistics'
@@ -6,7 +8,9 @@ const { Navigator, Screen } = createNativeStackNavigator()
 
 export function AppRoutes() {
   return (
-    <Navigator screenOptions={{ headerShown: false }}>
+    <Navigator
+      screenOptions={{ headerShown: false }}
+    >
       <Screen
         name='home'
         component={Home}
@@ -15,6 +19,16 @@ export function AppRoutes() {
       <Screen
         name='statistics'
         component={Statistics}
+      />
+
+      <Screen
+        name='register-meal'
+        component={RegisterMeal}
+      />
+
+      <Screen
+        name='feedback'
+        component={Feedback}
       />
     </Navigator>
   )
