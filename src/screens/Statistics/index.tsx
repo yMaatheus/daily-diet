@@ -1,21 +1,22 @@
-import { useMemo } from "react";
-import { StatisticsHeader } from "@components/StatisticsHeader";
-import { StatisticsCard } from "@components/StatisticsCard";
-import { useTheme } from "styled-components/native";
-import { useRoute } from "@react-navigation/native";
 import { ItemMealList } from "@/data";
+import { StatisticsCard } from "@components/StatisticsCard";
+import { StatisticsHeader } from "@components/StatisticsHeader";
+import { useRoute } from "@react-navigation/native";
+import { useMemo } from "react";
+import { useTheme } from "styled-components/native";
 import * as S from "./styles";
 
 type RouteParams = {
   percentage: string;
   data: ItemMealList[];
   isDiet: boolean;
+  streak: string;
 }
 
 export function Statistics() {
   const theme = useTheme();
   const route = useRoute();
-  const { percentage, data, isDiet } = route.params as RouteParams;
+  const { percentage, data, isDiet, streak } = route.params as RouteParams;
 
   const meals = useMemo(() => data.flatMap((meal) => meal.data), [data]);
 
@@ -33,7 +34,7 @@ export function Statistics() {
         <S.ContentTitle>Estatísticas gerais</S.ContentTitle>
 
         <StatisticsCard
-          title="0"
+          title={streak}
           description="melhor sequência de pratos dentro da dieta"
           backgroundColor={theme.COLORS.GRAY_200}
           style={{
