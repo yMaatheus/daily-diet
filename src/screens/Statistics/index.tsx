@@ -1,4 +1,4 @@
-import { ItemMealList } from "@/data";
+import { ItemMealList } from "@/types";
 import { StatisticsCard } from "@components/StatisticsCard";
 import { StatisticsHeader } from "@components/StatisticsHeader";
 import { useRoute } from "@react-navigation/native";
