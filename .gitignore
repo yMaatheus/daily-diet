@@ -36,3 +36,4 @@ yarn-error.*
 
 # data test file
 src/data/
+src/data/index.ts
