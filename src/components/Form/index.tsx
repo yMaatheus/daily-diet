@@ -4,7 +4,6 @@ import { onlyNumbersMask } from '@/utils/only-numbers';
 import { parse } from 'date-fns';
 import { Circle } from 'phosphor-react-native';
 import { useId, useState } from 'react';
-import { View } from 'react-native';
 import { z } from 'zod';
 import { Button } from '../Button';
 import { Input } from '../Input';
@@ -61,7 +60,7 @@ export function Form({ submitBtnTitle, submit }: Props) {
   }
 
   return (
-    <View>
+    <>
       <S.InputWrapper>
         <S.Label>Nome</S.Label>
         <Input onChangeText={setName} value={name} />
@@ -128,6 +127,6 @@ export function Form({ submitBtnTitle, submit }: Props) {
           variant='dark'
           onPress={handleSubmit} />
       </S.ButtonWrapper>
-    </View>
+    </>
   )
 }

@@ -1,5 +1,5 @@
-import { ItemMealList } from "@/data";
 import { getAllMeals } from "@/storage/get-all-meals";
+import { ItemMealList } from "@/types";
 import { HomeHeader } from "@components/HomeHeader";
 import { HomeInput } from "@components/HomeInput";
 import { HomeMealsList } from "@components/HomeMealsList";
