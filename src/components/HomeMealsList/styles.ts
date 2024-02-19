@@ -19,7 +19,7 @@ export const HeaderMealList = styled.Text`
   margin-top: 26px;
 `;
 
-export const ItemContainer = styled.View`
+export const ItemContainer = styled.TouchableOpacity`
   padding: 14px 16px 14px 12px;
   margin-top: 8px;
 

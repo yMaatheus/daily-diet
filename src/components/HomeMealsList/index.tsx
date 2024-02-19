@@ -1,15 +1,22 @@
+import { ItemMealList, Meal } from "@/types";
+import { useNavigation } from "@react-navigation/native";
 import { format } from "date-fns";
 import { SectionList } from "react-native";
-import { ItemMealList } from "../../data";
 import * as S from "./styles";
 
 export function HomeMealsList({ data }: { data: ItemMealList[] }) {
+  const navigation = useNavigation();
+
+  async function handleMealDetails(item: Meal) {
+    navigation.navigate('meal', { meal: item })
+  }
+
   return (
     <SectionList
       sections={data}
       keyExtractor={(item, index) => item.id + index}
       renderItem={({ item }) => (
-        <S.ItemContainer>
+        <S.ItemContainer onPress={() => handleMealDetails(item)}>
           <S.ItemInfo>
             <S.Time>{format(item.date, "HH:mm")}</S.Time>
             <S.Separator />

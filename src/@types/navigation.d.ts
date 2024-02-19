@@ -12,6 +12,9 @@ export declare global {
       feedback: {
         isDiet: boolean;
       };
+      meal: {
+        meal: Meal;
+      };
     }
   }
 }
