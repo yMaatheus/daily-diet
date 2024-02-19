@@ -1,4 +1,4 @@
-import { ItemMealList } from "@/data";
+import { ItemMealList } from "@/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MEALS_COLLECTION } from "./storageConfig";
 

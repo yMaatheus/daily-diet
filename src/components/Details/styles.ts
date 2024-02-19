@@ -73,3 +73,11 @@ export const ButtonsWrapper = styled.View`
   margin: 260px 0;
   gap: 8px;
 `
+
+export const OptionsModalContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 12px;
+`
