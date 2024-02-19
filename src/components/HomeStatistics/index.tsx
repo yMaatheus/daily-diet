@@ -1,4 +1,4 @@
-import { ItemMealList } from "@/data";
+import { ItemMealList } from "@/types";
 import { displayPercentage, isDietPercentage } from "@/utils/diet-utils";
 import { getBestStreak } from "@/utils/streak-utils";
 import { useNavigation } from "@react-navigation/native";
@@ -14,7 +14,7 @@ export function HomeStatistics({ data }: Props) {
   const [isDiet, setDiet] = useState<boolean>(true)
 
   const meals = useMemo(() => data.flatMap((meal) => meal.data), [data]);
-
+  
   const streak = useMemo(() => getBestStreak(meals), [meals]);
   const totalMeals = useMemo(() => meals.length, [meals]);
   const totalMealsInDiet = useMemo(() => meals.filter((meal) => meal.isDiet).length, [meals]);

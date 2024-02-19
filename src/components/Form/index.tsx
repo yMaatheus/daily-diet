@@ -3,24 +3,33 @@ import { dateApplyMask, hourApplyMask } from '@/utils/masks';
 import { onlyNumbersMask } from '@/utils/only-numbers';
 import { parse } from 'date-fns';
 import { Circle } from 'phosphor-react-native';
-import { useId, useState } from 'react';
+import { useState } from 'react';
 import { z } from 'zod';
 import { Button } from '../Button';
 import { Input } from '../Input';
 import * as S from './styles';
 
-type Props = {
-  submitBtnTitle: string;
-  submit: (date: string, meal: Meal) => Promise<void>;
+type DataProps = {
+  name?: string;
+  date?: string;
+  hour?: string;
+  description?: string;
+  isDiet?: boolean;
 }
 
-export function Form({ submitBtnTitle, submit }: Props) {
-  const id = useId();
-  const [name, setName] = useState("");
-  const [date, setDate] = useState("");
-  const [hour, setHour] = useState("");
-  const [description, setDescription] = useState("");
-  const [isDiet, setDiet] = useState<boolean | null>(null);
+type Props = {
+  id: string;
+  submitBtnTitle: string;
+  submit: (date: string, meal: Meal) => Promise<void>;
+  data?: DataProps;
+}
+
+export function Form({ id, submitBtnTitle, submit, data }: Props) {
+  const [name, setName] = useState(data?.name || "");
+  const [date, setDate] = useState(data?.date || "");
+  const [hour, setHour] = useState(data?.hour || "");
+  const [description, setDescription] = useState(data?.description || "");
+  const [isDiet, setDiet] = useState<boolean | null>(data?.isDiet == null ? null: data?.isDiet);
 
   function applyMask(
     value: string,
